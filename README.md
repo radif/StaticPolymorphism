@@ -3,17 +3,21 @@ StaticPolymorphism
 
 c++ approach to the objective-c polymorphic multistep initialization using Curiously Recursive Template Pattern with multiple inheritance. This example shows how to rely solely on templates while completely avoiding the use of Macro or repetitious code.
 
-Unlike c++, objective-c offers us an array of great tools such as reflection to write multistep instantiation type of factory methods.
+Unlike c++, objective-c offers us an array of great mechanisms such as reflection and partial duck typing to be able to write multistep instantiation type of factory methods.
 To achieve this goal, in objective-c you can do something like this in the base class:
+
 	+(instancetype)createInstance:(NSString *)localPath data:(NSDictionary *)data{
 	    id retVal=[[self alloc] initWithData:data];
 	    ((Base *)retVal)->_localPath=localPath;
 	    return retVal;
 	}
-While "self" refers to the correct class object, no matter which subclass you are addressing, "id" and "instancetype" provide necessary flexibility and compile time security at the same time.
+	
+While "self" refers to the correct class object, no matter which subclass you are addressing, "id" and "instancetype" provide us necessary flexibility and compile time security at the same time.
 
 To instantiate such object all you have to do is the following:
+
 	Derived * derived=[Derived createInstance:@"/" data:nil];
+	
 "self" of the base class will turn into the instance of "Derived".
 
 c++ doesn't have a class object. In order to implement the same pattern in c++ it is possible to add a "createInstance" static method into each subclass or create a macro that does that for you taking the type argument. Alternatively it is possible to leverage the Curiously Recursive Template Pattern and multiple inheritance to achieve the same goal. Additionally c++ comes more powerful with the ability to add pure virtual functions.
