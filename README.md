@@ -12,7 +12,7 @@ To achieve this goal, in objective-c you can do something like this in the base 
 	    return retVal;
 	}
 	
-While "self" refers to the correct class object, no matter which subclass you are addressing, "id" and "instancetype" provide us necessary flexibility and compile time security at the same time.
+While "self" refers to the correct class object, no matter which subclass you are addressing, "id" and "instancetype" provide us necessary flexibility and compile time security.
 
 To instantiate such object all you have to do is the following:
 
@@ -20,7 +20,7 @@ To instantiate such object all you have to do is the following:
 	
 "self" of the base class will turn into the instance of "Derived".
 
-c++ doesn't have a class object. In order to implement the same pattern in c++ it is possible to add a "createInstance" static method into each subclass or create a macro that does that for you taking the type argument. Alternatively it is possible to leverage the Curiously Recursive Template Pattern and multiple inheritance to achieve the same goal. Additionally c++ comes more powerful with the ability to add pure virtual functions.
+c++ doesn't have a class object. In order to implement the same pattern in c++ it is possible to add a "createInstance" static method into each subclass or create a macro that does that for you, taking the type argument. Alternatively it is possible to leverage the Curiously Recursive Template Pattern and multiple inheritance to achieve the same goal. Additionally c++ comes more powerful with the ability to add pure virtual functions to enforce certain methods such as init();
 
 The base class should be a template
 
