@@ -59,6 +59,18 @@ Starting level2, derived classes must specify which createInstance function they
 
 instantiation goes exactly as in objective-c and there is no need to add createInstance static function into each derived class:
 
+	auto derived1(Derived1::createInstance("/", nullptr));
+	auto derived2(Derived2::createInstance("/", nullptr));
+	auto derived3(Derived3::createInstance("/", nullptr));
+
+or
+
+	Derived1 * derived1=Derived1::createInstance("/", nullptr);
+	Derived2 * derived2=Derived2::createInstance("/", nullptr);
+	Derived3 * derived3=Derived3::createInstance("/", nullptr);
+
+obj-c example for comparison
+
 	Derived1 * derived1=[Derived1 createInstance:@"/" data:nil];
 	Derived2 * derived2=[Derived2 createInstance:@"/" data:nil];
 	Derived3 * derived3=[Derived3 createInstance:@"/" data:nil];
